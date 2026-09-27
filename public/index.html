@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GymTrack</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <h1>GymTrack</h1>
+    <p>Gestión y seguimiento de entrenamientos.</p>
+    <!-- method="post" evita que las credenciales viajen en la URL si el script no carga -->
+    <form id="login" method="post" action="/api/auth/login">
+      <label>Correo <input type="email" name="email" required autocomplete="username"></label>
+      <label>Contraseña <input type="password" name="password" required autocomplete="current-password"></label>
+      <button type="submit">Iniciar sesión</button>
+    </form>
+    <p id="mensaje" role="status"></p>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
