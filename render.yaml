@@ -1,0 +1,15 @@
+# Entorno de prueba (staging) en Render. JWT_SECRET y credenciales del admin se configuran en el panel.
+services:
+  - type: web
+    name: gymtrack-staging
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/health
+    autoDeploy: false
+    envVars:
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false

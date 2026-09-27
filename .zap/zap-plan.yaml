@@ -1,0 +1,37 @@
+# Plan de automatización de OWASP ZAP (escaneo pasivo + activo con XSS, SQLi, etc.)
+env:
+  contexts:
+    - name: gymtrack
+      urls: ["http://localhost:3000"]
+  parameters:
+    failOnError: true
+    progressToStdout: true
+jobs:
+  - type: replacer
+    parameters: {deleteAllRules: true}
+    rules:
+      - description: Token JWT de un usuario de prueba
+        matchType: req_header
+        matchString: Authorization
+        replacementString: "Bearer ${ZAP_AUTH_TOKEN}"
+  - type: openapi
+    parameters:
+      apiFile: docs/openapi.yaml
+      targetUrl: http://localhost:3000
+  - type: spider
+    parameters: {context: gymtrack, maxDuration: 2}
+  - type: passiveScan-wait
+    parameters: {maxDuration: 5}
+  - type: activeScan
+    parameters: {context: gymtrack, maxRuleDurationInMins: 2, maxScanDurationInMins: 12}
+  - type: report
+    parameters:
+      template: traditional-html
+      reportDir: reports/zap
+      reportFile: zap-reporte.html
+      reportTitle: "GymTrack - Reporte OWASP ZAP"
+  - type: report
+    parameters:
+      template: traditional-json
+      reportDir: reports/zap
+      reportFile: zap-reporte.json
