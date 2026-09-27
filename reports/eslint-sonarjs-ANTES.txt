@@ -1,0 +1,24 @@
+
+/home/claude/gymtrack/src/models/userStore.js
+  51:11  error  'passwordHash' is assigned a value but never used  no-unused-vars
+
+/home/claude/gymtrack/src/utils/validators.js
+  2:18  error  Simplify this regular expression to reduce its runtime, as it has super-linear performance due to backtracking  sonarjs/super-linear-regex
+
+/home/claude/gymtrack/tests/integration/api.test.js
+   10:93   error  Review this potentially hard-coded password  sonarjs/no-hardcoded-passwords
+   56:68   error  Review this potentially hard-coded password  sonarjs/no-hardcoded-passwords
+   66:63   error  Review this potentially hard-coded password  sonarjs/no-hardcoded-passwords
+   80:67   error  Review this potentially hard-coded password  sonarjs/no-hardcoded-passwords
+   86:98   error  Review this potentially hard-coded password  sonarjs/no-hardcoded-passwords
+  208:103  error  Review this potentially hard-coded password  sonarjs/no-hardcoded-passwords
+
+/home/claude/gymtrack/tests/unit/auth.middleware.test.js
+  44:19  error  Revoke and change this password, as it is compromised    sonarjs/hardcoded-secret-signatures
+  51:19  error  Use only strong cipher algorithms when signing this JWT  sonarjs/insecure-jwt-token
+
+/home/claude/gymtrack/tests/unit/validators.test.js
+  27:84  error  Review this potentially hard-coded password  sonarjs/no-hardcoded-passwords
+
+✖ 11 problems (11 errors, 0 warnings)
+
