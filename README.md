@@ -37,7 +37,9 @@ ADMIN_EMAIL=admin@gym.com ADMIN_PASSWORD=Admin1234 JWT_SECRET=cambia-esto npm st
 Especificación completa: `docs/openapi.yaml`.
 
 ## Pipeline CI/CD
-1. **Pruebas y lint** → 2. **SonarQube** → 3. **Imagen Docker** (GHCR) → 4. **Despliegue a staging** (Render) con prueba de humo → 5. **OWASP ZAP**.
+1. **Pruebas y lint** → 2. **SonarQube** → 3. **Imagen Docker** (GHCR) → 4. **Despliegue a staging** (Render) con prueba de humo → 5. **OWASP ZAP** (sobre la app levantada dentro del pipeline).
+
+Si falta un secreto, la etapa correspondiente se omite con un aviso en lugar de fallar.
 
 Configuración necesaria en GitHub (Settings → Secrets and variables → Actions):
 - Secret `SONAR_TOKEN` (de sonarcloud.io) y, opcional, variable `SONAR_HOST_URL` si usan un SonarQube propio.
