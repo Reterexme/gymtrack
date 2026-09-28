@@ -28,8 +28,18 @@ Plan: `.zap/zap-plan.yaml` (importa `docs/openapi.yaml`, spider, escaneo pasivo 
 | Complejidad ciclomática máx. por función | 11 | 11 |
 | Líneas de código (src + public / pruebas) | 407 / 436 | |
 - Archivos: `reports/eslint-sonarjs-ANTES.txt|json`, `reports/eslint-sonarjs-DESPUES.txt|json`, `reports/jscpd/`.
-- El análisis en el servidor de SonarQube/SonarCloud (deuda técnica, quality gate) corre en el job 2 del pipeline.
-  Para activarlo: crear el proyecto en sonarcloud.io y guardar `SONAR_TOKEN` en los *secrets* del repositorio.
+
+### SonarQube Cloud (organización `reterexme`, proyecto `Reterexme_gymtrack`)
+| Métrica | Antes | Después |
+|---|---|---|
+| Quality gate (Sonar way) | — | Aprobado |
+| Líneas analizadas | 10 mil (incluía `reports/`) | 434 |
+| Duplicación | 75.6 % (incluía `reports/`) | 0 % |
+| Issues | 1 (accesibilidad, 5 min) | 0 |
+| Security hotspots | 0 | 0 |
+
+- Se excluyó `reports/` del análisis (commit 9275818) y se corrigió el issue de accesibilidad (commit 006c38c).
+- Evidencias en `docs/evidencias/sonar_*.png`.
 
 ## 4. Dependencias – npm audit
 - 0 vulnerabilidades conocidas. Archivo: `reports/npm-audit.json`.
